@@ -3,12 +3,15 @@
     "types": ["jest", "@testing-library/jest-dom", "node"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/src/*": ["./src/*"],
+      "@/core/*": ["./core/*"],
+      "@/store/*": ["./store/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "jsx": "react-jsx"
   },
+  "include": ["src/**/*", "core/**/*", "store/**/*"],
   "files": [],
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }
