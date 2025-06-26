@@ -1,7 +1,7 @@
 import { useRobotContext } from '@/src/hooks/useRobotContext';
 
 export function RobotsList() {
-  const { robots, loading, error, refreshRobots } = useRobotContext();
+  const { robots, loading, error, refreshRobots, nextRobots } = useRobotContext();
 
   if (loading) return <p>Cargando robots...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -13,6 +13,9 @@ export function RobotsList() {
           <li key={robot.id}>{robot.name}</li>
         ))}
       </ul>
+      <button type="button" className="nes-btn is-primary" onClick={() => nextRobots()}>
+        Añadir Robots
+      </button>
       <button type="button" className="nes-btn is-primary" onClick={() => refreshRobots()}>
         Recargar Robots
       </button>

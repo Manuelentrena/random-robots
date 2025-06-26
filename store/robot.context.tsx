@@ -8,6 +8,7 @@ export interface RobotContextType {
   loading: boolean;
   error: Error | null;
   refreshRobots: (page?: number, results?: number) => Promise<void>;
+  nextRobots: (results?: number) => Promise<void>;
 }
 
 export const RobotContext = createContext<RobotContextType | null>(null);
