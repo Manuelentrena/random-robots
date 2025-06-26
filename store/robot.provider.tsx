@@ -46,9 +46,9 @@ export function RobotProvider({ children, service }: RobotProviderProps) {
     }
   };
 
-  // Cargar robots al montar una sola vez
   useEffect(() => {
     refreshRobots();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
