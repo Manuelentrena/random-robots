@@ -11,12 +11,13 @@ interface RobotProviderProps {
 
 export function RobotProvider({ children, service }: RobotProviderProps) {
   const [robots, setRobots] = useState<Robot[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [initialLoading, setInitialLoading] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [currentPage, setCurrentPage] = useState(initialConfig.page);
 
   const refreshRobots = async (page = initialConfig.page, results = initialConfig.results) => {
-    setLoading(true);
+    setInitialLoading(true);
     setError(null);
 
     try {
@@ -26,13 +27,13 @@ export function RobotProvider({ children, service }: RobotProviderProps) {
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Unknown error'));
     } finally {
-      setLoading(false);
+      setInitialLoading(false);
     }
   };
 
   const nextRobots = async (results = initialConfig.results) => {
     const nextPage = currentPage + 1;
-    setLoading(true);
+    setLoadingMore(true);
     setError(null);
     try {
       const newRobots = await service.execute(nextPage, results);
@@ -41,7 +42,7 @@ export function RobotProvider({ children, service }: RobotProviderProps) {
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Unknown error'));
     } finally {
-      setLoading(false);
+      setLoadingMore(false);
     }
   };
 
@@ -51,7 +52,9 @@ export function RobotProvider({ children, service }: RobotProviderProps) {
   }, []);
 
   return (
-    <RobotContext.Provider value={{ service, robots, loading, error, refreshRobots, nextRobots }}>
+    <RobotContext.Provider
+      value={{ service, robots, initialLoading, loadingMore, error, refreshRobots, nextRobots }}
+    >
       {children}
     </RobotContext.Provider>
   );

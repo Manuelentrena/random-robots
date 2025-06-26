@@ -5,7 +5,8 @@ import type { Robot } from '@/core/domain/models/Robot';
 export interface RobotContextType {
   service: GetRobotsUseCase;
   robots: Robot[];
-  loading: boolean;
+  initialLoading: boolean;
+  loadingMore: boolean;
   error: Error | null;
   refreshRobots: (page?: number, results?: number) => Promise<void>;
   nextRobots: (results?: number) => Promise<void>;
