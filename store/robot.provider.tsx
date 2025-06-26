@@ -1,6 +1,8 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { RobotContext } from '@/store/robot.context';
 import type { GetRobotsUseCase } from '@/core/application/get-robots.usecase';
+import type { Robot } from '@/core/domain/models/Robot';
+import { initialConfig } from '@/config/initial';
 
 interface RobotProviderProps {
   children: ReactNode;
@@ -8,5 +10,32 @@ interface RobotProviderProps {
 }
 
 export function RobotProvider({ children, service }: RobotProviderProps) {
-  return <RobotContext.Provider value={{ service }}>{children}</RobotContext.Provider>;
+  const [robots, setRobots] = useState<Robot[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const refreshRobots = async (page = initialConfig.page, results = initialConfig.results) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const newRobots = await service.execute(page, results);
+      setRobots(newRobots);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Unknown error'));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Cargar robots al montar una sola vez
+  useEffect(() => {
+    refreshRobots();
+  }, []);
+
+  return (
+    <RobotContext.Provider value={{ service, robots, loading, error, refreshRobots }}>
+      {children}
+    </RobotContext.Provider>
+  );
 }
