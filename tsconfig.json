@@ -6,13 +6,14 @@
       "@/src/*": ["./src/*"],
       "@/core/*": ["./core/*"],
       "@/store/*": ["./store/*"],
-      "@/config/*": ["./config/*"]
+      "@/config/*": ["./config/*"],
+      "@/utils/*": ["./src/utils/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*", "core/**/*", "store/**/*"],
+  "include": ["src/**/*", "core/**/*", "store/**/*", "utils/**/*"],
   "files": [],
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }
