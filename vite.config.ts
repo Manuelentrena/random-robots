@@ -10,6 +10,7 @@ export default defineConfig({
       '@/src': path.resolve(__dirname, './src'),
       '@/core': path.resolve(__dirname, './core'),
       '@/store': path.resolve(__dirname, './store'),
+      '@/config': path.resolve(__dirname, './config'),
     },
   },
 });

@@ -25,5 +25,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "__tests__", "core", "store"]
+  "include": ["src", "__tests__", "core", "store", "config"]
 }

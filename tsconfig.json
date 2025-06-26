@@ -5,7 +5,8 @@
     "paths": {
       "@/src/*": ["./src/*"],
       "@/core/*": ["./core/*"],
-      "@/store/*": ["./store/*"]
+      "@/store/*": ["./store/*"],
+      "@/config/*": ["./config/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,
