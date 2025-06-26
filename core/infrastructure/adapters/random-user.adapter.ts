@@ -3,6 +3,7 @@ import { Location } from '@/core/domain/models/Location';
 import { Robot } from '@/core/domain/models/Robot';
 import { Street } from '@/core/domain/models/Street';
 import { type RandomUserDto } from '@/core/infrastructure/types/random-user.types';
+import { initialConfig } from '@/config/initial';
 
 export const adapterToRobot = (dto: RandomUserDto): Robot => {
   const street = new Street(dto.location.street.number, dto.location.street.name);
@@ -21,12 +22,15 @@ export const adapterToRobot = (dto: RandomUserDto): Robot => {
     coordinates
   );
 
+  const fullName = `${dto.name.title} ${dto.name.first} ${dto.name.last}`;
+
   return new Robot(
     dto.login.uuid,
-    `${dto.name.title} ${dto.name.first} ${dto.name.last}`,
+    fullName,
     location,
     dto.email,
-    adapterToPhone(dto.phone)
+    adapterToPhone(dto.phone),
+    `${initialConfig.avatarUrl}${encodeURIComponent(fullName)}`
   );
 };
 

@@ -6,13 +6,15 @@ export class Robot {
     public readonly name: string,
     public readonly location: Location,
     public readonly email: string,
-    public readonly phone: number
+    public readonly phone: number,
+    public readonly avatarUrl: string
   ) {
     this.validateId(id);
     this.validateName(name);
     this.validateLocation(location);
     this.validateEmail(email);
     this.validatePhone(phone);
+    this.validateAvatarUrl(avatarUrl);
   }
 
   private validateId(id: string): void {
@@ -44,6 +46,17 @@ export class Robot {
   private validatePhone(phone: number): void {
     if (typeof phone !== 'number' || phone <= 0 || !Number.isInteger(phone)) {
       throw new Error(`Invalid phone number: ${phone}. Must be a positive integer.`);
+    }
+  }
+
+  private validateAvatarUrl(avatarUrl: string): void {
+    if (typeof avatarUrl !== 'string' || !avatarUrl.startsWith('https://')) {
+      throw new Error(
+        `Invalid avatar URL: ${avatarUrl}. Must be a valid URL starting with 'https://'.`
+      );
+    }
+    if (!avatarUrl.includes('robohash.org')) {
+      throw new Error(`Invalid avatar URL: ${avatarUrl}. Must be a valid RoboHash URL.`);
     }
   }
 }
