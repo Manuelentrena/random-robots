@@ -8,3 +8,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.min-h-screen-custom {
+  min-height: calc(100vh);
+}
