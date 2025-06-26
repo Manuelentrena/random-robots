@@ -3,5 +3,5 @@ import App from '../App';
 
 test('muestra el texto Random Robots', () => {
   render(<App />);
-  expect(screen.getByText("Random Robots")).toBeInTheDocument();
+  expect(screen.getByText('Random Robots')).toBeInTheDocument();
 });
