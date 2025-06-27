@@ -10,5 +10,5 @@
 }
 
 .min-h-screen-custom {
-  min-height: calc(100vh);
+  min-height: calc(100vh + 500px);
 }
