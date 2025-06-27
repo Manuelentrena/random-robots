@@ -4,4 +4,9 @@ export const initialConfig = {
   url: 'https://randomuser.me/api/',
   avatarUrl: 'https://robohash.org/',
   distanceObserve: '200px',
+  socialMedia: {
+    instagram: 'https://instagram.com/manuel_entrena',
+    github: 'https://github.com/Manuelentrena',
+    linkedin: 'https://linkedin.com/in/manuelentrena',
+  },
 };
