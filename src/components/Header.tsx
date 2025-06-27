@@ -12,7 +12,7 @@ export default function Header() {
             <section className="icon-list">
               <i className="snes-jp-logo"></i>
             </section>
-            <h1 className="text-xl sm:text-2xl font-bold">Random Robots</h1>
+            <h1 className="text-xl sm:text-2xl font-bold m-0 mt-3">Random Robots</h1>
           </div>
           <div className="w-full flex items-center justify-start">
             <a href="#" className="nes-badge is-splited">
@@ -25,9 +25,9 @@ export default function Header() {
         {/* Redes sociales (solo visible en desktop) */}
         <div className="hidden sm:flex flex-col items-end gap-2">
           <div className="flex flex-row items-center gap-2">
-            <h1 className="text-lg sm:text-xl font-bold">Social Media</h1>
+            <h1 className="text-lg sm:text-xl font-bold m-0">Social Media</h1>
           </div>
-          <div className="flex items-center gap-3 transform scale-75">
+          <div className="flex items-center justify-end gap-3 transform w-full">
             <a
               href={initialConfig.socialMedia.instagram}
               target="_blank"
