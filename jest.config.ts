@@ -13,5 +13,5 @@ export default {
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
   },
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testMatch: ['<rootDir>/__tests__/**/*.{ts,tsx,js,jsx}'],
+  testMatch: ['<rootDir>/__tests__/**/*.{spec,test}.{ts,tsx,js,jsx}'],
 };
