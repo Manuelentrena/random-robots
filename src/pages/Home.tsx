@@ -1,19 +1,35 @@
 import { useRobotContext } from '@/src/hooks/useRobotContext';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useObserver from '@/src/hooks/useObserver';
 import { RobotsList } from '@/src/components/RobotList';
 import ScrollToTopButton from '@/src/components/ScrollToTopButton';
 import { SearchForm } from '@/src/components/SearchForm';
-import { ProgressBar } from '../components/ProgressBar';
+import { ProgressBar } from '@/src/components/ProgressBar';
+import { RobotContainer } from '@/src/components/RobotContainer';
 
 export function Home() {
-  const { robots, error, refreshRobots, nextRobots, initialLoading, loadingMore } =
-    useRobotContext();
+  const {
+    robots: allRobots,
+    error,
+    refreshRobots,
+    nextRobots,
+    initialLoading,
+    loadingMore,
+  } = useRobotContext();
+  const [searchTerm, setSearchTerm] = useState('');
   const sentinelRef = useRef<HTMLDivElement>(null);
   const { isObserver } = useObserver({
     externalRef: sentinelRef as React.RefObject<HTMLElement>,
     shouldStop: loadingMore || initialLoading,
   });
+
+  const filteredRobots = allRobots.filter((robot) =>
+    robot.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+  };
 
   useEffect(() => {
     if (isObserver && !loadingMore) {
@@ -23,11 +39,10 @@ export function Home() {
 
   if (initialLoading) {
     return (
-      <div className="min-h-screen-custom">
-        <div className="flex items-center justify-center h-full">
-          <p className="text-gray-500">Cargando robots...</p>
-        </div>
-      </div>
+      <RobotContainer>
+        <SearchForm onSearch={handleSearch} onRefresh={refreshRobots} />
+        <ProgressBar isLoading={initialLoading} loadingSpeed={150} pauseAt={85} className="mt-4" />
+      </RobotContainer>
     );
   }
 
@@ -36,12 +51,12 @@ export function Home() {
   }
 
   return (
-    <>
-      <SearchForm onSearch={() => {}} onRefresh={refreshRobots} />
-      <RobotsList robots={robots} />
+    <RobotContainer>
+      <SearchForm onSearch={handleSearch} onRefresh={refreshRobots} />
+      <RobotsList robots={filteredRobots} />
       <ScrollToTopButton />
       <ProgressBar isLoading={loadingMore} loadingSpeed={150} pauseAt={85} className="mt-4" />
       <div ref={sentinelRef} />
-    </>
+    </RobotContainer>
   );
 }
