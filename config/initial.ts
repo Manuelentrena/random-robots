@@ -3,5 +3,5 @@ export const initialConfig = {
   results: 15,
   url: 'https://randomuser.me/api/',
   avatarUrl: 'https://robohash.org/',
-  distanceObserve: '100px',
+  distanceObserve: '200px',
 };
