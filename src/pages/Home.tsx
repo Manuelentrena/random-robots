@@ -2,7 +2,6 @@ import { useRobotContext } from '@/src/hooks/useRobotContext';
 import { useEffect, useRef, useState } from 'react';
 import useObserver from '@/src/hooks/useObserver';
 import { RobotsList } from '@/src/components/RobotList';
-import ScrollToTopButton from '@/src/components/ScrollToTopButton';
 import { SearchForm } from '@/src/components/SearchForm';
 import { ProgressBar } from '@/src/components/ProgressBar';
 import { RobotContainer } from '@/src/components/RobotContainer';
@@ -54,7 +53,6 @@ export function Home() {
     <RobotContainer>
       <SearchForm onSearch={handleSearch} onRefresh={refreshRobots} />
       <RobotsList robots={filteredRobots} />
-      <ScrollToTopButton />
       <ProgressBar isLoading={loadingMore} loadingSpeed={150} pauseAt={85} className="mt-4" />
       <div ref={sentinelRef} />
     </RobotContainer>
