@@ -8,17 +8,17 @@ export default function Header() {
       <div className="flex flex-col sm:flex-row justify-between mb-4 items-end">
         {/* Logo y título */}
         <div className="flex flex-col items-center sm:items-start gap-2 w-full sm:w-auto">
-          <div className="flex flex-row items-center gap-2">
+          <div className="flex flex-row items-center sm:items-start gap-2 w-full">
             <section className="icon-list">
               <i className="snes-jp-logo"></i>
             </section>
-            <h1 className="text-xl sm:text-2xl font-bold m-0 mt-3">Random Robots</h1>
+            <h1 className="text-sm sm:text-2xl font-bold m-0 mt-3">Random Robots</h1>
           </div>
           <div className="w-full flex items-center justify-start">
-            <a href="#" className="nes-badge is-splited">
+            <div className="nes-badge is-splited">
               <span className="is-dark">npm</span>
               <span className="is-primary">{packageJson.version}</span>
-            </a>
+            </div>
           </div>
         </div>
 
