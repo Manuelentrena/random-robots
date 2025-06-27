@@ -3,7 +3,7 @@ import type { Robot } from '@/core/domain/models/Robot';
 
 interface RobotCardProps {
   robot: Robot;
-  onClick?: () => void;
+  onClick: (robot: Robot) => void;
 }
 
 export const RobotCard: React.FC<RobotCardProps> = ({ robot, onClick }) => (
@@ -15,32 +15,32 @@ export const RobotCard: React.FC<RobotCardProps> = ({ robot, onClick }) => (
       backgroundPosition: 'center center',
       backgroundRepeat: 'no-repeat',
     }}
-    onClick={onClick}
+    onClick={() => onClick(robot)}
   >
     <p className="title !bg-black text-white">{robot.name}</p>
     {/* Globo de diálogo con posición absoluta */}
     <p className="absolute nes-balloon from-left nes-pointer transform scale-50 -translate-y-10 left-16 z-5">
-      Hi! my name is {robot.name}.
+      Hi! my name is {robot.name}
     </p>
-    {/* Overlay que aparece solo al hover */}
-    <div className="absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity" />
 
-    {/* Contenido que aparece solo al hover */}
-    <div className="absolute inset-0 z-10 flex flex-col items-start justify-center h-full text-white opacity-0 group-hover:opacity-100 transition-opacity space-y-2">
+    {/* Contenido hover con animación completa */}
+    <div className="absolute inset-x-0 bottom-0 h-0 z-10 bg-black bg-opacity-75 flex flex-col justify-end opacity-0 group-hover:h-full group-hover:opacity-100 transition-all duration-500 ease-in-out">
       <section className="w-full p-2">
+        <p className="text-left w-full flex items-center mb-2">
+          <a href="#" className="text-lg text-gray-200 mr-2">
+            #
+          </a>
+          <span className="text-gray-200">Contact Info:</span>
+        </p>
+
         <div className="flex items-center mb-4">
-          <i className="nes-icon reddit is-medium flex-shrink-0" />
-          <p className="ml-2 flex-1 text-xs text-gray-200 text-left">{robot.name}</p>
+          <i className="nes-icon gmail is-small flex-shrink-0 " />
+          <p className="m-0 ml-2 flex-1 text-xs text-gray-200 text-left truncate">{robot.email}</p>
         </div>
 
         <div className="flex items-center mb-4">
-          <i className="nes-icon gmail is-medium flex-shrink-0 " />
-          <p className="ml-2 flex-1 text-xs text-gray-200 text-left truncate">{robot.email}</p>
-        </div>
-
-        <div className="flex items-center mb-4">
-          <i className="nes-icon whatsapp is-medium flex-shrink-0" />
-          <p className="ml-2 flex-1 text-sm text-gray-200 text-left">{robot.phone}</p>
+          <i className="nes-icon whatsapp is-small flex-shrink-0" />
+          <p className="m-0 ml-2 flex-1 text-[10px] text-gray-200 text-left">{robot.phone}</p>
         </div>
       </section>
     </div>
