@@ -48,10 +48,14 @@ export const ProgressBar = ({
   if (!isLoading && progress === 0) return null;
 
   return (
-    <progress
-      className={`nes-progress is-success transition-all duration-300 ${className}`}
-      value={progress}
-      max="100"
-    />
+    <div className="min-h-screen-custom">
+      <div className="flex items-center justify-center h-full">
+        <progress
+          className={`nes-progress is-success transition-all duration-300 ${className}`}
+          value={progress}
+          max="100"
+        />
+      </div>
+    </div>
   );
 };
