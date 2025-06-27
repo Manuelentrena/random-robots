@@ -8,14 +8,16 @@ interface RobotCardProps {
 
 export const RobotCard: React.FC<RobotCardProps> = ({ robot, onClick }) => (
   <li
-    className="nes-container with-title is-rounded nes-pointer relative overflow-hidden group h-80 p-0"
+    className="nes-container with-title is-rounded nes-pointer relative group h-80 p-0 m-0"
     style={{
       backgroundImage: `url(${robot.avatarUrl})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      backgroundPosition: 'center center',
+      backgroundRepeat: 'no-repeat',
     }}
     onClick={onClick}
   >
+    <p className="title">{robot.name}</p>
     {/* Overlay que aparece solo al hover */}
     <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity" />
 
