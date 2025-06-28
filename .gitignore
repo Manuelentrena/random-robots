@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+*.tsbuildinfo
+vite.config.d.ts
+vite.config.js
+
+# testing
+/coverage
