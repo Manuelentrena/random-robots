@@ -11,7 +11,7 @@ export function RobotsList({ robots }: { robots: Robot[] }) {
   return (
     <div className="space-y-6">
       <div className="min-h-screen-custom">
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" role="list">
           {robots.map((robot) => (
             <RobotCard key={robot.id} robot={robot} onClick={handleClick} />
           ))}

@@ -16,6 +16,8 @@ export const RobotCard: React.FC<RobotCardProps> = ({ robot, onClick }) => (
       backgroundRepeat: 'no-repeat',
     }}
     onClick={() => onClick(robot)}
+    role="listitem"
+    data-testid={`robot-item-${robot.id}`}
   >
     <p className="title !bg-black text-white">{robot.name}</p>
     {/* Globo de diálogo con posición absoluta */}
