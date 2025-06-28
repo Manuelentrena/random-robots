@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import { robotsMock } from '../../core/infrastructure/mocks/robots.mock';
+import { robotsMock } from '@/core/infrastructure/mocks/robots.mock';
 
 export const handlers = [
   http.get('https://randomuser.me/api/', ({ request }) => {
