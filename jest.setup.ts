@@ -41,4 +41,5 @@ class MockBroadcastChannel {
   addEventListener() {}
   removeEventListener() {}
 }
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 global.BroadcastChannel = MockBroadcastChannel as any;
