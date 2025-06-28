@@ -31,7 +31,6 @@ RUN npm ci --omit=dev --ignore-scripts && \
 
 # 2. Copiar el build y configuraciones
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/public ./public
 
 # 3. Variables de entorno
 ENV NODE_ENV=production
