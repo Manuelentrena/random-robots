@@ -1,0 +1,51 @@
+# ================================================
+# ETAPA DE CONSTRUCCIÓN (builder)
+# ================================================
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+# 1. Copiar archivos esenciales primero (mejora caching de capas)
+COPY package.json package-lock.json ./
+
+# 2. Instalar dependencias (producción + desarrollo)
+RUN npm ci --omit=dev --ignore-scripts && \
+    npm cache clean --force
+
+# 3. Copiar el resto del código
+COPY . .
+
+# 4. Build de producción (React 19)
+RUN npm run build && \
+    rm -rf node_modules  # Limpieza
+
+# ================================================
+# ETAPA DE PRODUCCIÓN (runner)
+# ================================================
+FROM node:20-alpine
+WORKDIR /app
+
+# 1. Instalar solo dependencias de producción
+COPY --from=builder /app/package.json /app/package-lock.json ./
+RUN npm ci --omit=dev --ignore-scripts && \
+    npm cache clean --force
+
+# 2. Copiar el build y configuraciones
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/public ./public
+
+# 3. Variables de entorno
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV GENERATE_SOURCEMAP=false
+
+# 4. Instalar servidor ligero (opción a NGINX)
+RUN npm install -g serve
+
+# 5. Salud y configuración
+HEALTHCHECK --interval=30s --timeout=3s \
+    CMD curl -f http://localhost:${PORT} || exit 1
+
+EXPOSE ${PORT}
+
+# 6. Comando de inicio (usando serve)
+CMD ["serve", "-s", "dist", "-l", "3000", "--single"]
