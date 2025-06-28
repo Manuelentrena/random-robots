@@ -9,7 +9,7 @@
 
 ## Descripción
 
-Esta aplicación permite a los usuarios buscar robots aletorios a través de una interfaz intuitiva y visualizar los resultados, además de obtener detalles de cada robot. Se ha usado arquitectura hexagonal, testing avanzado con msw para los test de integración, y el framework CSS de NES para darle un toque retro al proyecto.
+Esta aplicación permite a los usuarios buscar robots aletorios a través de una interfaz intuitiva y visualizar los resultados, además de obtener detalles de cada robot. Se ha usado arquitectura hexagonal, testing avanzado con msw para los test de integración, y el framework CSS de NES para darle un toque retro al proyecto. Además hemos simulado la entrega a produccion con github actions y la creación de su imagen para producción.
 
 <p align="center"><img src="https://imagedelivery.net/vkH-_KAmKeWBBVeCxTyWtQ/d31321d8-7231-4693-8488-e9d7a7c5be00/public" width="800" alt="Next Movies Mobile"></p>
 
