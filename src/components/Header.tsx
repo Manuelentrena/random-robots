@@ -1,6 +1,5 @@
 import { RobotContainer } from './RobotContainer';
 import { initialConfig } from '@/config/initial';
-import packageJson from '../../package.json';
 
 export default function Header() {
   return (
@@ -17,7 +16,7 @@ export default function Header() {
           <div className="w-full flex items-center justify-start">
             <div className="nes-badge is-splited">
               <span className="is-dark">npm</span>
-              <span className="is-primary">{packageJson.version}</span>
+              <span className="is-primary">1.0.0</span>
             </div>
           </div>
         </div>
