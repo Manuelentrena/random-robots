@@ -2,7 +2,7 @@ import { renderWithProviders } from './__utils__/renderWithProviders';
 import { screen } from '@testing-library/react';
 import { act } from 'react';
 import { server } from './__mocks__/server';
-import { robotsMock } from '../core/infrastructure/mocks/robots.mock';
+import { robotsMock } from '@/core/infrastructure/mocks/robots.mock';
 import { Home } from '@/src/pages/Home';
 import Header from '@/src/components/Header';
 import { initialConfig } from '@/config/initial';
