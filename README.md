@@ -107,10 +107,10 @@ Una vez descargada puedes levantar la imagen con el siguiente comando:
 docker run ghcr.io/manuelentrena/random-robots:v1.0.2
 ```
 
-## Test Coverage
+## Cobertura de tests
 
-Visita los test en la página:
+[![codecov](https://codecov.io/gh/manuelentrena/random-robots/branch/main/graph/badge.svg)](https://codecov.io/gh/manuelentrena/random-robots)
 
-```bash
-  https://app.codecov.io/gh/Manuelentrena/random-robots
-```
+La cobertura de tests se genera automáticamente y se puede consultar en [Codecov](https://codecov.io/gh/manuelentrena/random-robots).
+
+---
